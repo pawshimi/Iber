@@ -1,4 +1,4 @@
-// Iber - Informatika Belajar | Core Application Logic
+// Iber - Informatika Belajar | Core Application Logic 
 
 // ==========================================
 // 1. DATA KURIKULUM INFORMATIKA (SEMESTER 1-7)
@@ -251,7 +251,7 @@ class WaveEngine {
     constructor(canvasId) {
         this.canvas = document.getElementById(canvasId);
         this.ctx = this.canvas.getContext('2d');
-        
+
         // Define wave layers with elegant coordinates and shapes
         // (y represents vertical offset from top: 0 to 1)
         this.waves = [
@@ -288,56 +288,56 @@ class WaveEngine {
                 gradientColors: ['rgba(3, 105, 161, 0.65)', 'rgba(7, 89, 133, 0.75)']
             }
         ];
-        
+
         this.init();
     }
-    
+
     init() {
         this.resize();
         window.addEventListener('resize', () => this.resize());
         this.animate();
     }
-    
+
     resize() {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
     }
-    
+
     animate() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
+
         // Draw sky gradient helper if necessary (canvas covers all, but we have css bg too)
         // Draw each wave
         this.waves.forEach((wave) => {
             const grad = this.ctx.createLinearGradient(0, this.canvas.height * wave.yPercent - wave.amplitude, 0, this.canvas.height);
             grad.addColorStop(0, wave.gradientColors[0]);
             grad.addColorStop(1, wave.gradientColors[1]);
-            
+
             this.ctx.beginPath();
             this.ctx.moveTo(0, this.canvas.height);
-            
+
             const baseHeight = this.canvas.height * wave.yPercent;
-            
+
             // Generate dynamic sine wave path
             for (let x = 0; x <= this.canvas.width; x += 3) {
                 // Double harmonic sine wave for organic feel
                 const sineVal1 = Math.sin(x * wave.length + wave.phase);
                 const sineVal2 = Math.cos(x * wave.length * 0.5 + wave.phase * 0.7);
                 const y = baseHeight + (sineVal1 * wave.amplitude * 0.7) + (sineVal2 * wave.amplitude * 0.3);
-                
+
                 this.ctx.lineTo(x, y);
             }
-            
+
             this.ctx.lineTo(this.canvas.width, this.canvas.height);
             this.ctx.closePath();
-            
+
             this.ctx.fillStyle = grad;
             this.ctx.fill();
-            
+
             // Update phase for animation flow
             wave.phase += wave.speed;
         });
-        
+
         requestAnimationFrame(() => this.animate());
     }
 }
@@ -351,7 +351,7 @@ class BeachAudioEngine {
         this.isPlaying = false;
         this.volume = 0.5; // Default 50%
         this.mode = 'synth'; // 'synth' or 'audio' (fallback)
-        
+
         // Nodes references
         this.masterGainNode = null;
         this.noiseSource = null;
@@ -361,26 +361,26 @@ class BeachAudioEngine {
         this.realAudioEl = document.getElementById('ambient-wave-audio');
         this.realAudioSource = null;
     }
-    
+
     initContext() {
         if (this.audioCtx) return;
-        
+
         const AudioContextClass = window.AudioContext || window.webkitAudioContext;
         this.audioCtx = new AudioContextClass();
-        
+
         // Setup Master Gain
         this.masterGainNode = this.audioCtx.createGain();
         this.masterGainNode.gain.setValueAtTime(this.volume, this.audioCtx.currentTime);
         this.masterGainNode.connect(this.audioCtx.destination);
-        
+
         // Create Synth Nodes and Real Audio Source
         this.setupSynthNodes();
         this.setupRealAudioNode();
     }
-    
+
     setupSynthNodes() {
         if (!this.audioCtx) return;
-        
+
         // 1. Generate 2 seconds of White Noise Buffer
         const bufferSize = 2 * this.audioCtx.sampleRate;
         const noiseBuffer = this.audioCtx.createBuffer(1, bufferSize, this.audioCtx.sampleRate);
@@ -388,61 +388,61 @@ class BeachAudioEngine {
         for (let i = 0; i < bufferSize; i++) {
             output[i] = Math.random() * 2 - 1;
         }
-        
+
         // 2. Create Buffer Source Node for noise loop
         this.noiseSource = this.audioCtx.createBufferSource();
         this.noiseSource.buffer = noiseBuffer;
         this.noiseSource.loop = true;
-        
+
         // 3. Lowpass filter to shape white noise into a soft rushing sound
         this.noiseFilter = this.audioCtx.createBiquadFilter();
         this.noiseFilter.type = 'lowpass';
         this.noiseFilter.frequency.setValueAtTime(350, this.audioCtx.currentTime);
         this.noiseFilter.Q.value = 1.0;
-        
+
         // 4. Modulate gain (volume) for wave swells
         this.noiseGainNode = this.audioCtx.createGain();
         this.noiseGainNode.gain.setValueAtTime(0.4, this.audioCtx.currentTime);
-        
+
         // 5. Connect noise generator
         this.noiseSource.connect(this.noiseFilter);
         this.noiseFilter.connect(this.noiseGainNode);
-        
+
         // 6. Connect noise to Master Gain (only connected when mode is 'synth')
         if (this.mode === 'synth') {
             this.noiseGainNode.connect(this.masterGainNode);
         }
-        
+
         // 7. LFO (Low Frequency Oscillator) to drive periodic wave swells
         // Real waves swell every 6 to 10 seconds (frequency = 0.1Hz - 0.16Hz)
         this.lfoNode = this.audioCtx.createOscillator();
         this.lfoNode.type = 'sine';
         this.lfoNode.frequency.setValueAtTime(0.12, this.audioCtx.currentTime);
-        
+
         // LFO Gain to modulate cutoff frequency (sweep filter: 380Hz +/- 220Hz => 160Hz to 600Hz)
         const lfoFilterGain = this.audioCtx.createGain();
         lfoFilterGain.gain.setValueAtTime(220, this.audioCtx.currentTime);
         this.lfoNode.connect(lfoFilterGain);
         lfoFilterGain.connect(this.noiseFilter.frequency);
-        
+
         // LFO Gain to modulate swell volume (modulate gain: 0.45 +/- 0.35 => 0.1 to 0.8)
         const lfoVolumeGain = this.audioCtx.createGain();
         lfoVolumeGain.gain.setValueAtTime(0.35, this.audioCtx.currentTime);
         this.lfoNode.connect(lfoVolumeGain);
         lfoVolumeGain.connect(this.noiseGainNode.gain);
-        
+
         // Start sources
         this.noiseSource.start();
         this.lfoNode.start();
     }
-    
+
     setupRealAudioNode() {
         if (!this.audioCtx || !this.realAudioEl) return;
-        
+
         // Web Audio routing for HTML5 Audio Element fallback
         try {
             this.realAudioSource = this.audioCtx.createMediaElementSource(this.realAudioEl);
-            
+
             // Connect to Master Gain (only connected when mode is 'audio')
             if (this.mode === 'audio') {
                 this.realAudioSource.connect(this.masterGainNode);
@@ -451,7 +451,7 @@ class BeachAudioEngine {
             console.warn("MediaElementSource already created or browser security restrictions applied.", e);
         }
     }
-    
+
     setVolume(value) {
         this.volume = value / 100;
         if (this.masterGainNode && this.audioCtx) {
@@ -459,14 +459,14 @@ class BeachAudioEngine {
             this.masterGainNode.gain.setTargetAtTime(this.volume, this.audioCtx.currentTime, 0.05);
         }
     }
-    
+
     togglePlay() {
         this.initContext();
-        
+
         if (this.audioCtx.state === 'suspended') {
             this.audioCtx.resume();
         }
-        
+
         if (this.isPlaying) {
             this.pause();
         } else {
@@ -474,37 +474,37 @@ class BeachAudioEngine {
         }
         return this.isPlaying;
     }
-    
+
     play() {
         this.isPlaying = true;
         if (this.mode === 'synth') {
             // In synth mode, make sure synth is connected to master gain
-            try { this.noiseGainNode.connect(this.masterGainNode); } catch (e) {}
+            try { this.noiseGainNode.connect(this.masterGainNode); } catch (e) { }
             // Pause fallback audio if playing
             if (this.realAudioEl) this.realAudioEl.pause();
         } else {
             // In fallback mode, connect media source to master gain and play media element
-            try { this.realAudioSource.connect(this.masterGainNode); } catch (e) {}
+            try { this.realAudioSource.connect(this.masterGainNode); } catch (e) { }
             // Disconnect synth to make it silent
-            try { this.noiseGainNode.disconnect(this.masterGainNode); } catch (e) {}
+            try { this.noiseGainNode.disconnect(this.masterGainNode); } catch (e) { }
             if (this.realAudioEl) this.realAudioEl.play().catch(err => console.log("Audio play deferred:", err));
         }
     }
-    
+
     pause() {
         this.isPlaying = false;
         // Pause fallback audio
         if (this.realAudioEl) this.realAudioEl.pause();
         // Mute synth by disconnecting from master gain
         if (this.noiseGainNode && this.masterGainNode) {
-            try { this.noiseGainNode.disconnect(this.masterGainNode); } catch (e) {}
+            try { this.noiseGainNode.disconnect(this.masterGainNode); } catch (e) { }
         }
     }
-    
+
     setMode(mode) {
         if (mode === this.mode) return;
         this.mode = mode;
-        
+
         if (this.isPlaying) {
             // Transition modes seamlessly
             this.play();
@@ -518,10 +518,10 @@ class BeachAudioEngine {
 document.addEventListener('DOMContentLoaded', () => {
     // 4.1 Initialize background wave simulation
     new WaveEngine('waveCanvas');
-    
+
     // 4.2 Initialize sound engine
     const audioEngine = new BeachAudioEngine();
-    
+
     // UI Elements
     const audioPanel = document.getElementById('audio-panel');
     const audioToggleBtn = document.getElementById('audio-toggle-btn');
@@ -530,7 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const volumeValue = document.getElementById('volume-value');
     const modeSynthBtn = document.getElementById('mode-synth-btn');
     const modeAudioBtn = document.getElementById('mode-audio-btn');
-    
+
     // Modal Overlay Elements
     const optionsModal = document.getElementById('options-modal');
     const optionsCloseBtn = document.getElementById('options-close-btn');
@@ -538,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const optGdrive = document.getElementById('opt-gdrive');
     const modalHeaderIcon = document.getElementById('modal-header-icon');
     const modalSemTitle = document.getElementById('modal-semester-title');
-    
+
     // Drawer Overlay Elements
     const drawerModal = document.getElementById('drawer-modal');
     const drawerCloseBtn = document.getElementById('drawer-close-btn');
@@ -548,35 +548,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const drawerSemDesc = document.getElementById('drawer-semester-desc');
     const drawerCourseList = document.getElementById('drawer-course-list');
     const drawerGdriveBtn = document.getElementById('drawer-gdrive-btn');
-    
+
     // Detail Course Panel
     const detailCourseName = document.getElementById('detail-course-name');
     const detailCourseSks = document.getElementById('detail-course-sks');
     const detailCourseCategory = document.getElementById('detail-course-category');
     const detailCourseDesc = document.getElementById('detail-course-desc');
-    
+
     let activeSemester = null;
-    
+
     // ------------------------------------------
     // A. Audio Controls Interaction
     // ------------------------------------------
-    
+
     // Handle Mute/Unmute toggle click
     audioToggleBtn.addEventListener('click', (e) => {
         // Toggle engine play/pause
         const isPlaying = audioEngine.togglePlay();
-        
+
         // Remove pulse animation after user first interacts
         audioToggleBtn.classList.remove('pulse');
-        
+
         // Update Icon representation
         updateSoundIcon(isPlaying);
-        
+
         // Prevent toggle expansion conflict on click if necessary,
         // but it is nice to expand the drawer so they see volume slider
         audioPanel.classList.toggle('expanded');
     });
-    
+
     // Expand panel on hover (desktop only)
     audioPanel.addEventListener('mouseenter', () => {
         audioPanel.classList.add('expanded');
@@ -584,28 +584,28 @@ document.addEventListener('DOMContentLoaded', () => {
     audioPanel.addEventListener('mouseleave', () => {
         audioPanel.classList.remove('expanded');
     });
-    
+
     // Change Volume
     volumeSlider.addEventListener('input', (e) => {
         const value = e.target.value;
         volumeValue.textContent = `${value}%`;
         audioEngine.setVolume(value);
     });
-    
+
     // Switch to Synthesis mode
     modeSynthBtn.addEventListener('click', () => {
         modeSynthBtn.classList.add('active');
         modeAudioBtn.classList.remove('active');
         audioEngine.setMode('synth');
     });
-    
+
     // Switch to Streaming Fallback audio mode
     modeAudioBtn.addEventListener('click', () => {
         modeAudioBtn.classList.add('active');
         modeSynthBtn.classList.remove('active');
         audioEngine.setMode('audio');
     });
-    
+
     function updateSoundIcon(isPlaying) {
         if (isPlaying) {
             // Dynamic Wave sound visual (Volume Waves active)
@@ -625,11 +625,11 @@ document.addEventListener('DOMContentLoaded', () => {
             audioToggleBtn.querySelector('.btn-text').textContent = 'Suara Mute';
         }
     }
-    
+
     // ------------------------------------------
     // B. Semester Selection Modal Interactions
     // ------------------------------------------
-    
+
     // Bind click trigger to semester cards
     const semCards = document.querySelectorAll('.card-semester');
     semCards.forEach(card => {
@@ -638,29 +638,29 @@ document.addEventListener('DOMContentLoaded', () => {
             openOptionsModal(semNum, card);
         });
     });
-    
+
     function openOptionsModal(semNum, cardElement) {
         activeSemester = semNum;
         const data = curriculumData[semNum];
-        
+
         if (!data) return;
-        
+
         // Update Modal Header Texts
         modalSemTitle.textContent = `Semester ${semNum}`;
-        
+
         // Capture card's beach decoration SVG and clone it inside modal header icon
         const decorSvg = cardElement.querySelector('.decor-svg').cloneNode(true);
         // Clear old SVG
         modalHeaderIcon.innerHTML = '';
         modalHeaderIcon.appendChild(decorSvg);
-        
+
         // Bind GDrive Link
         optGdrive.setAttribute('href', data.gdrive);
-        
+
         // Display Modal Backdrop
         optionsModal.classList.add('active');
     }
-    
+
     // Close Options Modal
     optionsCloseBtn.addEventListener('click', closeOptionsModal);
     optionsModal.addEventListener('click', (e) => {
@@ -668,41 +668,41 @@ document.addEventListener('DOMContentLoaded', () => {
             closeOptionsModal();
         }
     });
-    
+
     function closeOptionsModal() {
         optionsModal.classList.remove('active');
     }
-    
+
     // ------------------------------------------
     // C. Curriculum Drawer Interactions
     // ------------------------------------------
-    
+
     // Click "Penjelasan di Website"
     optExplain.addEventListener('click', () => {
         if (!activeSemester) return;
-        
+
         // Close Option popup, immediately open side drawer
         closeOptionsModal();
         openCurriculumDrawer(activeSemester);
     });
-    
+
     function openCurriculumDrawer(semNum) {
         const data = curriculumData[semNum];
         if (!data) return;
-        
+
         // Populate static info
         drawerBadge.textContent = data.badge;
         drawerSemTitle.textContent = `Kurikulum ${data.title}`;
         drawerSemDesc.textContent = data.desc;
         drawerGdriveBtn.setAttribute('href', data.gdrive);
-        
+
         // Populate Course List buttons
         drawerCourseList.innerHTML = '';
         data.courses.forEach((course, index) => {
             const btn = document.createElement('button');
             btn.className = 'course-item-btn';
             btn.setAttribute('data-course-index', index);
-            
+
             btn.innerHTML = `
                 <div class="course-name-info">
                     <span class="course-code-badge">${course.code}</span>
@@ -710,20 +710,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <span class="course-sks-tag">${course.sks}</span>
             `;
-            
+
             // Add click listener to show course description detail
             btn.addEventListener('click', () => {
                 // Remove active class from all course items
                 document.querySelectorAll('.course-item-btn').forEach(b => b.classList.remove('active'));
                 // Mark this active
                 btn.classList.add('active');
-                
+
                 showCourseDetail(course);
             });
-            
+
             drawerCourseList.appendChild(btn);
         });
-        
+
         // Default select first course
         if (data.courses.length > 0) {
             drawerCourseList.firstChild.classList.add('active');
@@ -731,25 +731,25 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             resetCourseDetailPanel();
         }
-        
+
         // Open Drawer
         drawerModal.classList.add('active');
     }
-    
+
     function showCourseDetail(course) {
         detailCourseName.textContent = course.name;
         detailCourseSks.textContent = course.sks;
         detailCourseCategory.textContent = course.category;
         detailCourseDesc.textContent = course.desc;
     }
-    
+
     function resetCourseDetailPanel() {
         detailCourseName.textContent = "Pilih mata kuliah untuk melihat detail";
         detailCourseSks.textContent = "- SKS";
         detailCourseCategory.textContent = "-";
         detailCourseDesc.textContent = "Klik salah satu mata kuliah di atas untuk membaca penjelasan lengkap mengenai apa yang dipelajari.";
     }
-    
+
     // Close Drawer
     drawerCloseBtn.addEventListener('click', closeCurriculumDrawer);
     drawerModal.addEventListener('click', (e) => {
@@ -757,19 +757,18 @@ document.addEventListener('DOMContentLoaded', () => {
             closeCurriculumDrawer();
         }
     });
-    
+
     function closeCurriculumDrawer() {
         drawerModal.classList.remove('active');
         activeSemester = null;
     }
-    
-    // Go Back from Drawer to Options modal
+
     drawerBackBtn.addEventListener('click', () => {
         if (!activeSemester) return;
-        
+
         const tempSem = activeSemester;
         closeCurriculumDrawer();
-        
+
         // Re-open options modal
         setTimeout(() => {
             const correspondingCard = document.querySelector(`.card-semester[data-semester="${tempSem}"]`);

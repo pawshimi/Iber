@@ -3,7 +3,8 @@
 /* --- Design Tokens / CSS Variables --- */
 :root {
     --bg-gradient: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
-    --sand-accent: #fef08a; /* Soft Warm Sand */
+    --sand-accent: #fef08a;
+    /* Soft Warm Sand */
     --sand-glow: #fde047;
     --sunset-orange: #fdba74;
     --sunset-glow: #f97316;
@@ -14,9 +15,12 @@
     --glass-bg-hover: rgba(224, 242, 254, 0.45);
     --glass-border: rgba(255, 255, 255, 0.45);
     --glass-border-hover: rgba(255, 255, 255, 0.7);
-    --text-primary: #0f172a; /* Slate 900 */
-    --text-secondary: #334155; /* Slate 700 */
-    --text-muted: #64748b; /* Slate 500 */
+    --text-primary: #0f172a;
+    /* Slate 900 */
+    --text-secondary: #334155;
+    /* Slate 700 */
+    --text-muted: #64748b;
+    /* Slate 500 */
     --shadow-sm: 0 4px 6px -1px rgba(14, 165, 233, 0.05), 0 2px 4px -1px rgba(14, 165, 233, 0.03);
     --shadow-md: 0 10px 15px -3px rgba(14, 165, 233, 0.1), 0 4px 6px -2px rgba(14, 165, 233, 0.05);
     --shadow-lg: 0 20px 25px -5px rgba(14, 165, 233, 0.15), 0 10px 10px -5px rgba(14, 165, 233, 0.08);
@@ -61,7 +65,7 @@ body {
     width: 400px;
     height: 400px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(254, 240, 138, 0.4) 0%, rgba(253, 186, 116, 0.15) 50%, rgba(255,255,255,0) 70%);
+    background: radial-gradient(circle, rgba(254, 240, 138, 0.4) 0%, rgba(253, 186, 116, 0.15) 50%, rgba(255, 255, 255, 0) 70%);
     filter: blur(40px);
     z-index: -3;
     pointer-events: none;
@@ -69,8 +73,15 @@ body {
 }
 
 @keyframes sunPulse {
-    0% { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(1.15); opacity: 1; }
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
 }
 
 .sky-elements {
@@ -91,7 +102,8 @@ body {
     filter: blur(4px);
 }
 
-.cloud::before, .cloud::after {
+.cloud::before,
+.cloud::after {
     content: '';
     position: absolute;
     background: rgba(255, 255, 255, 0.4);
@@ -105,8 +117,20 @@ body {
     left: 10%;
     animation: floatCloud 45s linear infinite;
 }
-.cloud-1::before { width: 50px; height: 50px; top: -25px; left: 15px; }
-.cloud-1::after { width: 70px; height: 70px; top: -35px; right: 20px; }
+
+.cloud-1::before {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 15px;
+}
+
+.cloud-1::after {
+    width: 70px;
+    height: 70px;
+    top: -35px;
+    right: 20px;
+}
 
 .cloud-2 {
     width: 180px;
@@ -115,17 +139,39 @@ body {
     right: 15%;
     animation: floatCloudReverse 60s linear infinite;
 }
-.cloud-2::before { width: 70px; height: 70px; top: -35px; left: 25px; }
-.cloud-2::after { width: 90px; height: 90px; top: -45px; right: 30px; }
+
+.cloud-2::before {
+    width: 70px;
+    height: 70px;
+    top: -35px;
+    left: 25px;
+}
+
+.cloud-2::after {
+    width: 90px;
+    height: 90px;
+    top: -45px;
+    right: 30px;
+}
 
 @keyframes floatCloud {
-    0% { transform: translateX(-150px); }
-    100% { transform: translateX(calc(100vw + 150px)); }
+    0% {
+        transform: translateX(-150px);
+    }
+
+    100% {
+        transform: translateX(calc(100vw + 150px));
+    }
 }
 
 @keyframes floatCloudReverse {
-    0% { transform: translateX(150px); }
-    100% { transform: translateX(calc(-100vw - 150px)); }
+    0% {
+        transform: translateX(150px);
+    }
+
+    100% {
+        transform: translateX(calc(-100vw - 150px));
+    }
 }
 
 /* --- Container & Layout --- */
@@ -178,6 +224,7 @@ body {
     letter-spacing: -1.5px;
     background: linear-gradient(135deg, #0369a1 0%, #0284c7 40%, #0d9488 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
 }
@@ -192,8 +239,13 @@ body {
 }
 
 @keyframes waveLogo {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(-6px) rotate(8deg); }
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-6px) rotate(8deg);
+    }
 }
 
 /* --- Grid Semester --- */
@@ -279,7 +331,8 @@ body {
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: auto;
-    padding-right: 30px; /* Leave space for SVGs */
+    padding-right: 30px;
+    /* Leave space for SVGs */
     font-weight: 400;
 }
 
@@ -320,21 +373,103 @@ body {
 }
 
 /* Float Animations for card SVGs to make page feel alive */
-.decor-sem-1 { animation: floatDecor1 6s ease-in-out infinite alternate; }
-.decor-sem-2 { animation: floatDecor2 8s ease-in-out infinite alternate; }
-.decor-sem-3 { animation: floatDecor3 7s ease-in-out infinite alternate; }
-.decor-sem-4 { animation: floatDecor4 6s ease-in-out infinite alternate; }
-.decor-sem-5 { animation: floatDecor5 8s ease-in-out infinite alternate; }
-.decor-sem-6 { animation: floatDecor6 7s ease-in-out infinite alternate; }
-.decor-sem-7 { animation: floatDecor7 9s ease-in-out infinite alternate; }
+.decor-sem-1 {
+    animation: floatDecor1 6s ease-in-out infinite alternate;
+}
 
-@keyframes floatDecor1 { 0% { transform: translateY(0) rotate(0); } 100% { transform: translateY(-8px) rotate(8deg); } }
-@keyframes floatDecor2 { 0% { transform: translateY(0) rotate(0); } 100% { transform: translateY(-6px) rotate(-6deg); } }
-@keyframes floatDecor3 { 0% { transform: translateY(0) rotate(0); } 100% { transform: translateY(-10px) rotate(10deg); } }
-@keyframes floatDecor4 { 0% { transform: translateY(0) rotate(0); } 100% { transform: translateY(-5px) rotate(-8deg); } }
-@keyframes floatDecor5 { 0% { transform: translateY(0) rotate(0); } 100% { transform: translateY(-8px) rotate(5deg); } }
-@keyframes floatDecor6 { 0% { transform: translateY(0) rotate(0); } 100% { transform: translateY(-6px) rotate(6deg); } }
-@keyframes floatDecor7 { 0% { transform: translateY(0) rotate(0); } 100% { transform: translateY(-12px) rotate(-5deg); } }
+.decor-sem-2 {
+    animation: floatDecor2 8s ease-in-out infinite alternate;
+}
+
+.decor-sem-3 {
+    animation: floatDecor3 7s ease-in-out infinite alternate;
+}
+
+.decor-sem-4 {
+    animation: floatDecor4 6s ease-in-out infinite alternate;
+}
+
+.decor-sem-5 {
+    animation: floatDecor5 8s ease-in-out infinite alternate;
+}
+
+.decor-sem-6 {
+    animation: floatDecor6 7s ease-in-out infinite alternate;
+}
+
+.decor-sem-7 {
+    animation: floatDecor7 9s ease-in-out infinite alternate;
+}
+
+@keyframes floatDecor1 {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+
+    100% {
+        transform: translateY(-8px) rotate(8deg);
+    }
+}
+
+@keyframes floatDecor2 {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+
+    100% {
+        transform: translateY(-6px) rotate(-6deg);
+    }
+}
+
+@keyframes floatDecor3 {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+
+    100% {
+        transform: translateY(-10px) rotate(10deg);
+    }
+}
+
+@keyframes floatDecor4 {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+
+    100% {
+        transform: translateY(-5px) rotate(-8deg);
+    }
+}
+
+@keyframes floatDecor5 {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+
+    100% {
+        transform: translateY(-8px) rotate(5deg);
+    }
+}
+
+@keyframes floatDecor6 {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+
+    100% {
+        transform: translateY(-6px) rotate(6deg);
+    }
+}
+
+@keyframes floatDecor7 {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+
+    100% {
+        transform: translateY(-12px) rotate(-5deg);
+    }
+}
 
 /* --- Card Hover Effects --- */
 .card-semester:hover {
@@ -423,9 +558,17 @@ body {
 }
 
 @keyframes buttonPulse {
-    0% { box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.4), var(--shadow-md); }
-    70% { box-shadow: 0 0 0 12px rgba(2, 132, 199, 0), var(--shadow-md); }
-    100% { box-shadow: 0 0 0 0 rgba(2, 132, 199, 0), var(--shadow-md); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.4), var(--shadow-md);
+    }
+
+    70% {
+        box-shadow: 0 0 0 12px rgba(2, 132, 199, 0), var(--shadow-md);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(2, 132, 199, 0), var(--shadow-md);
+    }
 }
 
 /* Audio Drawer (expands when toggled/hovered) */
@@ -478,6 +621,7 @@ body {
 /* Slider Custom Styling */
 .slider {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     height: 6px;
     border-radius: 3px;
@@ -493,7 +637,7 @@ body {
     border-radius: 50%;
     background: #0284c7;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: var(--transition-quick);
 }
 
@@ -527,7 +671,7 @@ body {
 .mode-btn.active {
     background: #fff;
     color: #0284c7;
-    box-shadow: 0 2px 5px rgba(14,165,233,0.15);
+    box-shadow: 0 2px 5px rgba(14, 165, 233, 0.15);
 }
 
 /* --- Modals Generic Styling --- */
@@ -770,13 +914,16 @@ body {
 .drawer-body::-webkit-scrollbar {
     width: 6px;
 }
+
 .drawer-body::-webkit-scrollbar-track {
     background: transparent;
 }
+
 .drawer-body::-webkit-scrollbar-thumb {
     background: rgba(2, 132, 199, 0.2);
     border-radius: 3px;
 }
+
 .drawer-body::-webkit-scrollbar-thumb:hover {
     background: rgba(2, 132, 199, 0.4);
 }
@@ -877,7 +1024,7 @@ body {
 .course-sks-tag {
     font-size: 0.8rem;
     font-weight: 700;
-    background: rgba(255,255,255,0.7);
+    background: rgba(255, 255, 255, 0.7);
     padding: 4px 8px;
     border-radius: 8px;
     color: var(--text-secondary);
@@ -922,7 +1069,8 @@ body {
     margin-bottom: 16px;
 }
 
-.detail-sks, .detail-category {
+.detail-sks,
+.detail-category {
     font-size: 0.75rem;
     font-weight: 700;
     padding: 2px 8px;
@@ -949,7 +1097,7 @@ body {
 .drawer-footer {
     padding: 24px 32px;
     border-top: 1px solid rgba(15, 23, 42, 0.05);
-    background: rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .gdrive-footer-btn {
@@ -980,54 +1128,54 @@ body {
     body {
         padding-bottom: 100px;
     }
-    
+
     .app-header h1 {
         font-size: 2.8rem;
     }
-    
+
     .tagline {
         font-size: 1rem;
     }
-    
+
     .grid-semester {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .card-semester {
         min-height: auto;
     }
-    
+
     .svg-decor {
         width: 80px;
         height: 80px;
     }
-    
+
     .drawer-card {
         max-width: 100%;
     }
-    
+
     .modal-card {
         padding: 24px;
         border-radius: 24px;
     }
-    
+
     .modal-title {
         font-size: 1.6rem;
     }
-    
+
     .audio-control-panel {
         bottom: 16px;
         right: 16px;
         left: 16px;
         align-items: stretch;
     }
-    
+
     .audio-toggle-btn {
         justify-content: center;
         width: 100%;
     }
-    
+
     .audio-drawer {
         width: 100%;
     }
@@ -1035,11 +1183,25 @@ body {
 
 /* --- Entrance Animations --- */
 @keyframes fadeInDown {
-    0% { opacity: 0; transform: translateY(-30px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
