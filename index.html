@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iber - Informatika Belajar | Platform Kurikulum & Materi Pantai Dinamis</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Iber (Informatika Belajar) adalah platform interaktif kurikulum dan materi kuliah Teknik Informatika Semester 1-7 dengan tema pantai estetik, animasi ombak dinamis, dan sintesis audio ombak Web Audio API.">
+    <meta name="keywords" content="Iber, Informatika Belajar, kurikulum informatika, materi kuliah, teknik informatika, belajar coding, web audio api, canvas wave">
+    <meta name="author" content="Iber Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Iber - Informatika Belajar">
+    <meta property="og:description" content="Eksplorasi Kurikulum & Materi Informatika Semester 1-7 dengan animasi pantai dinamis dan suara ombak prosedural.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/username/repo/main/preview.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Canvas for background wave animation -->
+    <canvas id="waveCanvas"></canvas>
+
+    <!-- Background decorative floating sun/clouds/bubbles -->
+    <div class="sun-glow"></div>
+    <div class="sky-elements">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <div class="wave-icon">
+                    <svg viewBox="0 0 100 100" class="logo-svg">
+                        <path d="M10,60 C30,30 40,70 60,40 C80,10 90,50 110,30 L110,100 L10,100 Z" fill="url(#waveGrad)" />
+                        <defs>
+                            <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0284c7" />
+                                <stop offset="100%" stop-color="#38bdf8" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h1 id="main-title">Iber</h1>
+            </div>
+            <p class="tagline">Informatika Belajar &bull; Gerbang materi kuliah & kurikulum Informatika dengan suasana pantai yang menenangkan</p>
+        </header>
+
+        <!-- Semester Cards Grid -->
+        <section class="grid-semester" aria-labelledby="main-title">
+            <!-- Semester 1 -->
+            <button class="card-semester" data-semester="1" id="btn-sem-1">
+                <div class="card-glass"></div>
+                <div class="card-content">
+                    <span class="semester-num">01</span>
+                    <h2 class="semester-title">Semester 1</h2>
+                    <p class="semester-desc">Dasar-dasar informatika, logika pemrograman dasar, matematika diskrit, dan fondasi kalkulus.</p>
+                    <div class="quick-tags">
+                        <span>Python</span>
+                        <span>Matematika Diskrit</span>
+                        <span>Kalkulus</span>
+                    </div>
+                </div>
+                <!-- Shell & Starfish Decoration -->
+                <div class="svg-decor decor-sem-1">
+                    <svg viewBox="0 0 100 100" class="decor-svg">
+                        <!-- Starfish -->
+                        <polygon points="50,5 64,36 98,38 72,59 80,93 50,73 20,93 28,59 2,38 36,36" fill="#f43f5e" stroke="#ffe4e6" stroke-width="2" />
+                        <circle cx="50" cy="50" r="3" fill="#ffe4e6" />
+                        <!-- Shell -->
+                        <path d="M20,80 C15,65 30,55 45,60 C50,45 65,45 70,60 C80,65 75,80 70,85 C65,90 25,90 20,80 Z" fill="#fdba74" stroke="#ffedd5" stroke-width="2" transform="rotate(-15, 50, 70)" />
+                    </svg>
+                </div>
+            </button>
+
+            <!-- Semester 2 -->
+            <button class="card-semester" data-semester="2" id="btn-sem-2">
+                <div class="card-glass"></div>
+                <div class="card-content">
+                    <span class="semester-num">02</span>
+                    <h2 class="semester-title">Semester 2</h2>
+                    <p class="semester-desc">Struktur data, pemrograman berorientasi objek (OOP), dan dasar arsitektur sistem komputer.</p>
+                    <div class="quick-tags">
+                        <span>C++ / Java</span>
+                        <span>OOP</span>
+                        <span>Arkom</span>
+                    </div>
+                </div>
+                <!-- Palm Tree & Coconut Decoration -->
+                <div class="svg-decor decor-sem-2">
+                    <svg viewBox="0 0 100 100" class="decor-svg">
+                        <!-- Trunk -->
+                        <path d="M40,95 C45,70 50,45 65,30 C68,30 65,35 55,50 C48,65 46,80 43,95 Z" fill="#854d0e" />
+                        <!-- Leaves -->
+                        <path d="M65,30 C55,25 35,28 25,35 C35,38 50,38 65,30 Z" fill="#15803d" />
+                        <path d="M65,30 C60,18 45,10 32,12 C40,20 52,25 65,30 Z" fill="#166534" />
+                        <path d="M65,30 C70,18 85,12 95,15 C85,22 75,26 65,30 Z" fill="#15803d" />
+                        <path d="M65,30 C75,32 90,42 95,55 C85,48 75,40 65,30 Z" fill="#166534" />
+                        <!-- Coconuts -->
+                        <circle cx="58" cy="36" r="6" fill="#451a03" />
+                        <circle cx="66" cy="38" r="5" fill="#451a03" />
+                    </svg>
+                </div>
+            </button>
+
+            <!-- Semester 3 -->
+            <button class="card-semester" data-semester="3" id="btn-sem-3">
+                <div class="card-glass"></div>
+                <div class="card-content">
+                    <span class="semester-num">03</span>
+                    <h2 class="semester-title">Semester 3</h2>
+                    <p class="semester-desc">Manajemen basis data, sistem operasi fundamental, rekayasa perangkat lunak, dan jaringan komputer.</p>
+                    <div class="quick-tags">
+                        <span>SQL</span>
+                        <span>Linux</span>
+                        <span>RPL</span>
+                        <span>Jaringan</span>
+                    </div>
+                </div>
+                <!-- Lifebuoy & Anchor Decoration -->
+                <div class="svg-decor decor-sem-3">
+                    <svg viewBox="0 0 100 100" class="decor-svg">
+                        <!-- Anchor -->
+                        <path d="M50,20 L50,75 M30,60 C30,75 70,75 70,60 M25,60 L35,60 M65,60 L75,60 M50,15 C45,15 45,25 50,25 C55,25 55,15 50,15 Z" fill="none" stroke="#64748b" stroke-width="6" stroke-linecap="round" />
+                        <!-- Lifebuoy -->
+                        <circle cx="50" cy="50" r="22" fill="none" stroke="#ef4444" stroke-width="10" />
+                        <circle cx="50" cy="50" r="22" fill="none" stroke="#f8fafc" stroke-width="10" stroke-dasharray="18 16" />
+                        <circle cx="50" cy="50" r="27" fill="none" stroke="#0f172a" stroke-width="1.5" />
+                        <circle cx="50" cy="50" r="17" fill="none" stroke="#0f172a" stroke-width="1.5" />
+                    </svg>
+                </div>
+            </button>
+
+            <!-- Semester 4 -->
+            <button class="card-semester" data-semester="4" id="btn-sem-4">
+                <div class="card-glass"></div>
+                <div class="card-content">
+                    <span class="semester-num">04</span>
+                    <h2 class="semester-title">Semester 4</h2>
+                    <p class="semester-desc">Analisis kompleksitas algoritma, pengembangan web modern, grafika komputer, dan teori graf diskrit.</p>
+                    <div class="quick-tags">
+                        <span>Web Dev</span>
+                        <span>Algoritma</span>
+                        <span>OpenGL</span>
+                    </div>
+                </div>
+                <!-- Surfboard & Wave Decoration -->
+                <div class="svg-decor decor-sem-4">
+                    <svg viewBox="0 0 100 100" class="decor-svg">
+                        <!-- Surfboard -->
+                        <path d="M25,85 C15,65 25,25 50,10 C75,25 85,65 75,85 C65,95 35,95 25,85 Z" fill="#06b6d4" stroke="#e0f7fa" stroke-width="2" transform="rotate(25, 50, 50)" />
+                        <!-- Surfboard stripes -->
+                        <path d="M38,89 C34,75 42,40 50,10" fill="none" stroke="#f59e0b" stroke-width="4" transform="rotate(25, 50, 50)" />
+                        <path d="M62,89 C66,75 58,40 50,10" fill="none" stroke="#f59e0b" stroke-width="4" transform="rotate(25, 50, 50)" />
+                        <!-- Small Wave at bottom -->
+                        <path d="M10,80 C30,70 40,90 60,80 C80,70 90,85 105,80 L105,100 L10,100 Z" fill="#0284c7" opacity="0.8" />
+                    </svg>
+                </div>
+            </button>
+
+            <!-- Semester 5 -->
+            <button class="card-semester" data-semester="5" id="btn-sem-5">
+                <div class="card-glass"></div>
+                <div class="card-content">
+                    <span class="semester-num">05</span>
+                    <h2 class="semester-title">Semester 5</h2>
+                    <p class="semester-desc">Pemrograman aplikasi mobile (Flutter/Android), kecerdasan buatan, dan penjaminan mutu perangkat lunak.</p>
+                    <div class="quick-tags">
+                        <span>Mobile</span>
+                        <span>AI</span>
+                        <span>QA / Testing</span>
+                    </div>
+                </div>
+                <!-- Sunglasses & Coconut Drink Decoration -->
+                <div class="svg-decor decor-sem-5">
+                    <svg viewBox="0 0 100 100" class="decor-svg">
+                        <!-- Coconut Drink -->
+                        <path d="M25,75 C25,55 55,55 55,75 C55,88 25,88 25,75 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+                        <!-- Straw -->
+                        <line x1="40" y1="65" x2="55" y2="40" stroke="#f43f5e" stroke-width="4" stroke-linecap="round" />
+                        <!-- Umbrella -->
+                        <path d="M15,55 L35,45 L38,60 Z" fill="#3b82f6" />
+                        <!-- Sunglasses -->
+                        <g transform="translate(30, 20) rotate(-10)">
+                            <rect x="5" y="10" width="22" height="15" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2.5" />
+                            <rect x="33" y="10" width="22" height="15" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2.5" />
+                            <path d="M27,15 L33,15" stroke="#f59e0b" stroke-width="3" />
+                            <path d="M2,13 L5,13 M55,13 L58,13" stroke="#f59e0b" stroke-width="2" />
+                        </g>
+                    </svg>
+                </div>
+            </button>
+
+            <!-- Semester 6 -->
+            <button class="card-semester" data-semester="6" id="btn-sem-6">
+                <div class="card-glass"></div>
+                <div class="card-content">
+                    <span class="semester-num">06</span>
+                    <h2 class="semester-title">Semester 6</h2>
+                    <p class="semester-desc">Keamanan jaringan & siber, pembelajaran mesin (Machine Learning), sistem terdistribusi, dan cloud computing.</p>
+                    <div class="quick-tags">
+                        <span>Cybersec</span>
+                        <span>ML</span>
+                        <span>Cloud</span>
+                    </div>
+                </div>
+                <!-- Sandcastle & Shovel Decoration -->
+                <div class="svg-decor decor-sem-6">
+                    <svg viewBox="0 0 100 100" class="decor-svg">
+                        <!-- Sandcastle -->
+                        <path d="M20,85 L20,60 L32,60 L32,50 L40,50 L40,65 L60,65 L60,50 L68,50 L68,60 L80,60 L80,85 Z" fill="#eab308" stroke="#ca8a04" stroke-width="2" />
+                        <!-- Gate -->
+                        <path d="M44,85 C44,75 56,75 56,85 Z" fill="#854d0e" />
+                        <!-- Flag -->
+                        <line x1="50" y1="50" x2="50" y2="35" stroke="#9a3412" stroke-width="2" />
+                        <polygon points="50,35 65,40 50,45" fill="#ef4444" />
+                        <!-- Shovel -->
+                        <g transform="translate(68, 65) rotate(25)">
+                            <rect x="0" y="0" width="6" height="25" fill="#ef4444" rx="2" />
+                            <path d="M-6,20 L12,20 L8,32 L-2,32 Z" fill="#475569" />
+                        </g>
+                    </svg>
+                </div>
+            </button>
+
+            <!-- Semester 7 -->
+            <button class="card-semester" data-semester="7" id="btn-sem-7">
+                <div class="card-glass"></div>
+                <div class="card-content">
+                    <span class="semester-num">07</span>
+                    <h2 class="semester-title">Semester 7</h2>
+                    <p class="semester-desc">Sains data mendalam, etika profesi & kewirausahaan, metodologi penelitian, dan pengerjaan Tugas Akhir I.</p>
+                    <div class="quick-tags">
+                        <span>Data Science</span>
+                        <span>Metpen</span>
+                        <span>Skripsi I</span>
+                    </div>
+                </div>
+                <!-- Lighthouse & Seagull Decoration -->
+                <div class="svg-decor decor-sem-7">
+                    <svg viewBox="0 0 100 100" class="decor-svg">
+                        <!-- Rock base -->
+                        <path d="M15,90 C30,80 70,80 85,90 L90,95 L10,95 Z" fill="#475569" />
+                        <!-- Lighthouse Tower -->
+                        <path d="M42,90 L46,40 L54,40 L58,90 Z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" />
+                        <!-- Red stripes -->
+                        <path d="M43.6,74 L56.4,74 L55.2,60 L44.8,60 Z" fill="#ef4444" />
+                        <!-- Light Room -->
+                        <rect x="45" y="30" width="10" height="10" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5" />
+                        <!-- Roof -->
+                        <polygon points="43,30 50,18 57,30" fill="#ef4444" />
+                        <!-- Light Beams -->
+                        <polygon points="50,35 15,20 18,50" fill="#fef08a" opacity="0.3" />
+                        <polygon points="50,35 85,20 82,50" fill="#fef08a" opacity="0.3" />
+                        <!-- Seagull -->
+                        <path d="M20,20 Q28,15 32,22 Q36,15 44,20" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" transform="scale(0.7) translate(15, 10)" />
+                    </svg>
+                </div>
+            </button>
+        </section>
+    </main>
+
+    <!-- Floating Audio Control Panel -->
+    <div class="audio-control-panel" id="audio-panel">
+        <button class="audio-toggle-btn pulse" id="audio-toggle-btn" aria-label="Aktifkan Suara Ombak">
+            <!-- Speaker Wave Icon (Default Muted State) -->
+            <svg viewBox="0 0 24 24" class="icon-svg" id="sound-icon">
+                <!-- Muted State -->
+                <path class="mute-path" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.21.05-.42.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.03c1.37-.31 2.6-.97 3.63-1.85l2.73 2.73 1.27-1.27L4.27 3zM12 4L9.91 6.09 12 8.18V4z" fill="currentColor"/>
+            </svg>
+            <span class="btn-text">Suara Pantai</span>
+        </button>
+        
+        <div class="audio-drawer" id="audio-drawer">
+            <div class="drawer-row">
+                <span class="label">Volume</span>
+                <input type="range" id="volume-slider" min="0" max="100" value="50" class="slider">
+                <span id="volume-value" class="value">50%</span>
+            </div>
+            <div class="drawer-row audio-mode-selection">
+                <span class="label">Mode Suara</span>
+                <div class="mode-toggle-group">
+                    <button class="mode-btn active" data-mode="synth" id="mode-synth-btn">Sintesis</button>
+                    <button class="mode-btn" data-mode="audio" id="mode-audio-btn">Rekaman</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden audio element for fallback streaming real wave noise -->
+    <audio id="ambient-wave-audio" loop crossorigin="anonymous" src="https://assets.mixkit.co/active_storage/sfx/2513/2513-84.wav"></audio>
+
+    <!-- Interactive Options Modal (Initial Popup when clicking Semester) -->
+    <div class="modal-overlay" id="options-modal">
+        <div class="modal-card">
+            <button class="modal-close-btn" id="options-close-btn" aria-label="Tutup modal">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon-container" id="modal-header-icon">
+                    <!-- Dynamic SVG inserted here -->
+                </div>
+                <h3 class="modal-title" id="modal-semester-title">Semester X</h3>
+                <p class="modal-subtitle">Pilih cara mengeksplorasi semester ini</p>
+            </div>
+            
+            <div class="modal-options-grid">
+                <!-- Option 1: Curriculum Explanation -->
+                <button class="option-card" id="opt-explain">
+                    <div class="option-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-8h-2v2h2v-2zm0 4h-2v4h2v-4z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="option-text">
+                        <h4>Penjelasan di Website</h4>
+                        <p>Lihat detail kurikulum, daftar mata kuliah, dan bobot materi langsung.</p>
+                    </div>
+                </button>
+                
+                <!-- Option 2: Google Drive Link -->
+                <a href="#" target="_blank" class="option-card" id="opt-gdrive">
+                    <div class="option-icon gdrive-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="option-text">
+                        <h4>Buka Google Drive</h4>
+                        <p>Akses folder berkas materi kuliah, PDF, slide presentasi, dan referensi.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Curriculum Drawer (Sides in from the right / opens as detailed modal) -->
+    <div class="modal-overlay" id="drawer-modal">
+        <div class="drawer-card">
+            <div class="drawer-header">
+                <button class="drawer-back-btn" id="drawer-back-btn">&larr; Kembali</button>
+                <button class="modal-close-btn" id="drawer-close-btn" aria-label="Tutup drawer">&times;</button>
+            </div>
+            
+            <div class="drawer-body">
+                <div class="drawer-meta">
+                    <span class="drawer-label-badge" id="drawer-badge">SEMESTER X</span>
+                    <h3 class="drawer-title" id="drawer-semester-title">Kurikulum Semester X</h3>
+                    <p class="drawer-desc" id="drawer-semester-desc">Daftar mata kuliah inti dan kompetensi utama yang akan dipelajari.</p>
+                </div>
+
+                <!-- Course List Section -->
+                <div class="courses-section">
+                    <h4 class="section-title">Daftar Mata Kuliah</h4>
+                    <div class="course-list" id="drawer-course-list">
+                        <!-- Dynamic list of courses -->
+                    </div>
+                </div>
+
+                <!-- Course Detail Panel (Shows detailed info when a course is clicked) -->
+                <div class="course-detail-panel" id="course-detail-panel">
+                    <h4 class="detail-subtitle">Detail Mata Kuliah</h4>
+                    <div class="detail-card">
+                        <h5 class="detail-course-name" id="detail-course-name">Pilih mata kuliah untuk melihat detail</h5>
+                        <div class="detail-meta">
+                            <span class="detail-sks" id="detail-course-sks">- SKS</span>
+                            <span class="detail-category" id="detail-course-category">-</span>
+                        </div>
+                        <p class="detail-desc" id="detail-course-desc">Klik salah satu mata kuliah di atas untuk membaca penjelasan lengkap mengenai apa yang dipelajari dan urgensinya.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="drawer-footer">
+                <a href="#" target="_blank" class="gdrive-footer-btn" id="drawer-gdrive-btn">
+                    <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18">
+                        <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z" fill="currentColor"/>
+                    </svg>
+                    Buka Google Drive Semester Ini
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
