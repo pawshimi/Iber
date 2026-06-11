@@ -13,7 +13,7 @@ const curriculumData = {
             {
                 code: "KF70061001",
                 name: "Kalkulus Dasar",
-                sks: "3 SKS",
+                sks: "2 SKS",
                 category: "Teori",
                 desc: "Belum ada deskripsi."
             },
