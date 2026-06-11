@@ -135,36 +135,57 @@ const curriculumData = {
     3: {
         title: "Semester 3",
         badge: "SEMESTER 3",
-        desc: "Penerapan sistem tingkat menengah: pengolahan basis data relasional, manajemen sistem operasi, dan jaringan.",
-        gdrive: "https://drive.google.com/drive/folders/placeholder_semester_3",
+        desc: ".",
+        gdrive: "https://drive.google.com/drive/folders/1DsLdDVae536l3-xU7WaI22vdAR7hH7LJ?usp=sharing",
         courses: [
             {
-                code: "INF301",
-                name: "Basis Data",
-                sks: "4 SKS",
-                category: "Teori & Praktikum",
-                desc: "Konsep pemodelan data (ERD), normalisasi tabel, manipulasi data menggunakan SQL (DDL, DML, DCL), transaksi basis data, indeksasi, serta pengenalan awal NoSQL database."
+                code: "-",
+                name: "Organisasi dan Arsitektur Komputer",
+                sks: "3 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi."
             },
             {
-                code: "INF302",
+                code: "-",
+                name: "Aljabar Linier dan Matriks",
+                sks: "2 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi."
+            },
+            {
+                code: "-",
+                name: "Rekayasa Perangkat Lunak",
+                sks: "3 SKS",
+                category: "Teori & Praktikum",
+                desc: "Belum ada deskripsi."
+            },
+            {
+                code: "-",
+                name: "Pemrograman Berorientasi Objek",
+                sks: "3 SKS",
+                category: "Teori & Praktikum",
+                desc: "Belum ada deskripsi."
+            },
+            {
+                code: "-",
+                name: "Pemrograman Sistem",
+                sks: "3 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi."
+            },
+            {
+                code: "-",
+                name: "Probabilitas dan Statistika",
+                sks: "3 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi."
+            },
+            {
+                code: "-",
                 name: "Sistem Operasi",
                 sks: "3 SKS",
                 category: "Teori & Praktikum",
-                desc: "Manajemen proses, penjadwalan CPU, konkurensi dan sinkronisasi (semaphore, mutex), deadlock, manajemen memori (virtual memory, paging), serta sistem file dan manajemen penyimpanan pada OS seperti Linux."
-            },
-            {
-                code: "INF303",
-                name: "Rekayasa Perangkat Lunak",
-                sks: "3 SKS",
-                category: "Teori",
-                desc: "Metodologi pengembangan perangkat lunak (Waterfall, Agile, Scrum), analisis kebutuhan sistem, pemodelan menggunakan UML (Use Case, Class Diagram, Sequence Diagram), manajemen proyek perangkat lunak, dan estimasi biaya."
-            },
-            {
-                code: "INF304",
-                name: "Jaringan Komputer",
-                sks: "3 SKS",
-                category: "Teori & Praktikum",
-                desc: "Memahami model OSI 7-layer dan TCP/IP. Mempelajari protokol routing (OSPF, BGP), subnetting IP Address (IPv4 & IPv6), DNS, HTTP, DHCP, soket pemrograman dasar, serta konfigurasi router/switch."
+                desc: "Belum ada deskripsi."
             }
         ]
     },
