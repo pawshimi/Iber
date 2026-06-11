@@ -7,65 +7,128 @@ const curriculumData = {
     1: {
         title: "Semester 1",
         badge: "SEMESTER 1",
-        desc: "Fase pengenalan dasar-dasar ilmu komputer, logika pemrograman, dan matematika penunjang analisis komputasi.",
-        gdrive: "https://drive.google.com/drive/folders/placeholder_semester_1",
+        desc: ".",
+        gdrive: "https://drive.google.com/drive/folders/122wvZKmcWGOVS49FRoz5lX0jRKNZVeOy?usp=sharing",
         courses: [
             {
-                code: "INF101",
-                name: "Pengantar Teknologi Informasi",
+                code: "KF70061001",
+                name: "Kalkulus Dasar",
+                sks: "3 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi."
+            },
+            {
+                code: "KI70061001",
+                name: "Kewirausahaan",
                 sks: "2 SKS",
-                category: "Teori & Wajib",
-                desc: "Pengenalan arsitektur komputer dasar, sejarah komputasi, peran sistem operasi, jaringan komputer, database, serta dasar-dasar etika komputasi dan perkembangan teknologi masa kini."
+                category: "Teori",
+                desc: "Belum ada deskripsi."
             },
             {
-                code: "INF102",
-                name: "Pemrograman Dasar (Python/C++)",
-                sks: "4 SKS",
+                code: "KP70061001",
+                name: "Bahasa Inggris",
+                sks: "2 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi."
+            },
+            {
+                code: "KP70061002",
+                name: "Berpikir Komputasional",
+                sks: "2 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi."
+            },
+            {
+                code: "KP70061003",
+                name: "Logika Informatika",
+                sks: "3 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi."
+            },
+            {
+                code: "KP70061004",
+                name: "Algoritma dan Pemrograman",
+                sks: "3 SKS",
                 category: "Teori & Praktikum",
-                desc: "Mempelajari logika pemrograman struktural menggunakan Python atau C++. Topik meliputi variabel, tipe data, struktur kontrol (percabangan dan perulangan), fungsi, array, serta konsep dasar rekursi."
+                desc: "Belum ada deskripsi."
             },
             {
-                code: "INF103",
-                name: "Matematika Diskrit",
-                sks: "3 SKS",
+                code: "KU70061001",
+                name: "Bahasa Indonesia",
+                sks: "2 SKS",
                 category: "Teori",
-                desc: "Fondasi matematika untuk informatika. Mempelajari logika proposisi, teori himpunan, relasi dan fungsi, aljabar boolean, kombinatorika, teori graf dasar, serta pembuktian matematis seperti induksi matematika."
+                desc: "Belum ada deskripsi."
             },
             {
-                code: "INF104",
-                name: "Kalkulus I",
-                sks: "3 SKS",
+                code: "KU70061002",
+                name: "Pancasila",
+                sks: "2 SKS",
                 category: "Teori",
-                desc: "Pemahaman limit fungsi, turunan (derivatif) beserta aplikasinya untuk optimasi, serta konsep integral dasar untuk menghitung luas daerah di bawah kurva."
+                desc: "Belum ada deskripsi."
             }
         ]
     },
     2: {
         title: "Semester 2",
         badge: "SEMESTER 2",
-        desc: "Memperdalam struktur penyimpanan data, paradigma pemrograman objek, serta pemahaman hardware pendukung.",
-        gdrive: "https://drive.google.com/drive/folders/placeholder_semester_2",
+        desc: ".",
+        gdrive: "https://drive.google.com/drive/folders/1Ulz0UbFrsLuzZzDeuvzkpFSP3FPN11bM?usp=drive_link",
         courses: [
             {
-                code: "INF201",
-                name: "Algoritma & Struktur Data",
-                sks: "4 SKS",
-                category: "Teori & Praktikum",
-                desc: "Implementasi struktur data linear dan non-linear: Linked List, Stack, Queue, Tree (BST, AVL), Graph, serta algoritma pencarian (Search) dan pengurutan (Sorting) beserta analisis kompleksitas dasarnya."
+                code: "KF70062001",
+                name: "Kalkulus Lanjut",
+                sks: "2 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi"
             },
             {
-                code: "INF202",
-                name: "Pemrograman Berorientasi Objek (OOP)",
-                sks: "3 SKS",
-                category: "Teori & Praktikum",
-                desc: "Paradigma PBO menggunakan Java atau C#. Mempelajari konsep kelas, objek, enkapsulasi, pewarisan (inheritance), polimorfisme, abstraksi, interface, penanganan eksepsi (exception), dan design pattern dasar."
+                code: "KI70062001",
+                name: "Literasi Inteligensi Artifisial",
+                sks: "2 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi"
             },
             {
-                code: "INF203",
-                name: "Arsitektur Komputer",
+                code: "KP70062001",
+                name: "Sistem Digital",
+                sks: "2 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi"
+            },
+            {
+                code: "KP70062002",
+                name: "Matematika Diskrit",
                 sks: "3 SKS",
                 category: "Teori",
-                desc: "Pemahaman mengenai CPU, memori utama, cache, bus sistem, I/O modul, representasi data di tingkat biner, serta arsitektur instruksi (ISA) dan organisasi unit kontrol."
+                desc: "Belum ada deskripsi"
+            },
+            {
+                code: "KP70062003",
+                name: "Basis Data",
+                sks: "3 SKS",
+                category: "Teori & Praktikum",
+                desc: "Belum ada deskripsi"
+            },
+            {
+                code: "KP70062004",
+                name: "Struktur Data",
+                sks: "3 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi"
+            },
+            {
+                code: "KU70062001",
+                name: "Agama",
+                sks: "2 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi"
+            },
+            {
+                code: "KU70062002",
+                name: "Kewarganegaraan",
+                sks: "2 SKS",
+                category: "Teori",
+                desc: "Belum ada deskripsi"
             }
         ]
     },
