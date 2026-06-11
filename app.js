@@ -193,7 +193,7 @@ const curriculumData = {
         title: "Semester 4",
         badge: "SEMESTER 4",
         desc: "Fokus pada efisiensi algoritma lanjut, pembuatan aplikasi web terintegrasi, serta matematika grafika komputer.",
-        gdrive: "https://drive.google.com/drive/folders/placeholder_semester_4",
+        gdrive: "https://drive.google.com/drive/folders/1gI184CKupCucsJ59sJHrR-teQuOFkOqw?usp=sharing",
         courses: [
             {
                 code: "INF401",
@@ -229,7 +229,7 @@ const curriculumData = {
         title: "Semester 5",
         badge: "SEMESTER 5",
         desc: "Fase pengembangan produk lanjut: aplikasi mobile natif/lintas-platform, pengujian terstruktur, serta kecerdasan buatan.",
-        gdrive: "https://drive.google.com/drive/folders/placeholder_semester_5",
+        gdrive: "https://drive.google.com/drive/folders/1HxIaZFLnPm9pV4Q5gRzHQUWBLWsH5kbv?usp=sharing",
         courses: [
             {
                 code: "INF501",
@@ -258,7 +258,7 @@ const curriculumData = {
         title: "Semester 6",
         badge: "SEMESTER 6",
         desc: "Integrasi sistem tingkat tinggi: arsitektur awan (cloud), sistem terdistribusi skala besar, dan model pembelajaran mesin.",
-        gdrive: "https://drive.google.com/drive/folders/placeholder_semester_6",
+        gdrive: "https://drive.google.com/drive/folders/14jxbXJgxRuA9mQt2oK_fXI1MqTfeORri?usp=sharing",
         courses: [
             {
                 code: "INF601",
@@ -294,7 +294,7 @@ const curriculumData = {
         title: "Semester 7",
         badge: "SEMESTER 7",
         desc: "Tahap pematangan akhir: analisis data skala besar, etika profesional industri, penulisan ilmiah, dan pengerjaan Tugas Akhir.",
-        gdrive: "https://drive.google.com/drive/folders/placeholder_semester_7",
+        gdrive: "https://drive.google.com/drive/folders/1H9_O6eYS5rC_mtDIJY6pCAmyYGUfzZ5c?usp=sharing",
         courses: [
             {
                 code: "INF701",
